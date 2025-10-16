@@ -4,12 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Shield, RefreshCw, Trophy } from "lucide-react";
 import { format } from "date-fns";
-import { fi } from "date-fns/locale";
+import type { TiktokGuess } from "@shared/schema";
 
 export default function Admin() {
   const [autoRefresh, setAutoRefresh] = useState(false);
 
-  const { data: guesses, isLoading, refetch } = useQuery({
+  const { data: guesses, isLoading, refetch } = useQuery<TiktokGuess[]>({
     queryKey: ["/api/tiktok-guesses"],
     refetchInterval: autoRefresh ? 5000 : false,
   });
@@ -151,9 +151,7 @@ export default function Admin() {
                           </td>
                           <td className="p-3 text-sm text-muted-foreground">
                             {guess.createdAt
-                              ? format(new Date(guess.createdAt), "dd.MM.yyyy HH:mm", {
-                                  locale: fi,
-                                })
+                              ? format(new Date(guess.createdAt), "dd.MM.yyyy HH:mm")
                               : "-"}
                           </td>
                         </tr>
