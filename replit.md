@@ -6,9 +6,12 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 ## Projektin Tila
 **Valmis MVP** - Kaikki pääominaisuudet toiminnassa
 - ✅ Jouluinen design (punainen, vihreä, kulta, kermanvärinen)
-- ✅ Kaksi toimivaa peliä (palapeli ja pähkinälajittelu) pisteiden tallennuksella
+- ✅ Neljä toimivaa peliä (palapeli, pähkinälajittelu, muistipeli, bussikilpailu) pisteiden tallennuksella
+- ✅ Leaderboard -tulostaulut kaikille peleille (top 10 pisteet)
 - ✅ TikTok live arvaus -järjestelmä
+- ✅ TikTok tilastosivu analytiikalla
 - ✅ Admin-näkymä arvausten tarkasteluun
+- ✅ Sosiaalinen jakaminen (Twitter/X, Facebook, native share API)
 - ✅ Mock-verkkokauppa esimerkkituotteilla
 
 ## Tekninen Toteutus
@@ -34,12 +37,15 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 
 #### Sivut (client/src/pages)
 1. **Home** (`/`) - Etusivu heroilla, peliesittelyllä ja toimintakehotteilla
-2. **Games** (`/pelit`) - Pelihalli kahdella pelillä:
-   - Joulupalapeli (drag-and-drop)
-   - Pähkinälajittelu (muistipeli)
+2. **Games** (`/pelit`) - Pelihalli neljällä pelillä:
+   - Joulupalapeli (palanvaihto)
+   - Pähkinälajittelu (järjestyspeli)
+   - Muistipeli (korttien muistaminen)
+   - Bussikilpailu (tietokilpailu Porin linjoista)
 3. **TikTok Guess** (`/arvaus`) - Live-arvauslomake katsojille
-4. **Shop** (`/kauppa`) - Mock-verkkokauppa Bussipukki-tuotteilla
-5. **Admin** (`/admin`) - Dashboard kaikkien arvausten näyttämiseen
+4. **TikTok Stats** (`/tilastot`) - Tilastot ja analytiikka TikTok-arvauksista
+5. **Shop** (`/kauppa`) - Mock-verkkokauppa Bussipukki-tuotteilla
+6. **Admin** (`/admin`) - Dashboard kaikkien arvausten näyttämiseen
 
 ### Design System
 
@@ -73,19 +79,49 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - Ajastin ja pistetilastot
 - Pisteiden tallennus nimellä
 
-### 3. TikTok Live Arvaus
+### 3. Muistipeli
+- 16 korttia jouluisilla ikoneilla (8 paria)
+- 3D flip-animaatiot kortinvaihdossa
+- Siirtojen ja ajan seuranta
+- Pisteiden tallennus nimellä
+
+### 4. Bussikilpailu (Tietokilpailu)
+- 10 kysymystä Porin bussiliikenteestä
+- Multiple choice -vastaukset
+- Visuaalinen palaute oikeista/vääristä vastauksista
+- Pisteet ja ajan seuranta
+
+### 5. Leaderboard (Tulostaulu)
+- Top 10 pisteet jokaiselle pelille
+- Ranking-ikonit (kruunu, mitalit)
+- Näyttää pelaajan nimen ja ajan
+- Reaaliaikainen päivitys
+
+### 6. TikTok Live Arvaus
 - Katsojat arvaavat vitsien määrän live-lähetystä varten
 - Lomake: nimi/käyttäjätunnus + arvattu numero
 - Confetti-efekti onnistuneen lähetyksen jälkeen
 - Kaikki arvaukset tallentuvat tietokantaan
 
-### 4. Admin Dashboard
+### 7. TikTok Tilastot
+- Kokonais- ja keskiarvolaskut arvauksista
+- Arvausten jakauma (top 10 suosituimmat numerot)
+- Aikaväli (ensimmäinen - viimeisin arvaus)
+- Eri pelaajien ja numeroiden määrä
+
+### 8. Admin Dashboard
 - Näytä kaikki TikTok-arvaukset
 - Automaattinen päivitys (5s välein)
 - Tilastot: yhteensä, keskiarvo, pienin, suurin
 - Taulukkonäkymä ajalla
 
-### 5. Mock Verkkokauppa
+### 9. Sosiaalinen Jakaminen
+- Twitter/X -jakaminen pelipistemäärien kanssa
+- Facebook -jakaminen
+- Native Share API mobiilikäyttöön
+- Automaattinen tekstin generointi pelinimellä ja pisteillä
+
+### 10. Mock Verkkokauppa
 - 6 esimerkkituotetta (mukit, t-paidat, hupparit)
 - "Esimerkki" badget kaikilla tuotteilla
 - Info: Printful-integraatio tulossa
@@ -105,10 +141,10 @@ Avaa selain: http://localhost:5000
 
 ### Tulevat Parannukset
 1. **Printful API**: Oikean verkkokaupan integraatio kun API-token saadaan toimimaan
-2. **Pisteet Leaderboard**: Näytä parhaat pisteet pelisivulla
-3. **Lisää Pelejä**: Muistipeli, tietokilpailu bussireiteistä
-4. **TikTok Historia**: Aikaisempien pelien tilastot
-5. **Sosiaaliset Jaot**: Jaa pelitulokset sosiaaliseen mediaan
+2. **PostgreSQL-tietokanta**: Vaihda in-memory storagesta pysyvään tallennukseen
+3. **Admin-autentikointi**: Suojaa admin-sivu
+4. **Lisää pelejä**: Mahdolliset uudet pelit tulevaisuudessa
+5. **Optimoinnit**: Kuvien ja suorituskyvyn optimointi
 
 ## Huomioitavaa
 
