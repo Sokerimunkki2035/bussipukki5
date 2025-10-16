@@ -11,6 +11,7 @@ export function Header() {
     { path: "/", label: "Etusivu" },
     { path: "/pelit", label: "Pelit" },
     { path: "/arvaus", label: "TikTok Arvaus" },
+    { path: "/tilastot", label: "Tilastot" },
     { path: "/kauppa", label: "Kauppa" },
     { path: "/admin", label: "Admin" },
   ];

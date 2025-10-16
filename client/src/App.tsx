@@ -8,6 +8,7 @@ import { Footer } from "@/components/Footer";
 import Home from "@/pages/Home";
 import Games from "@/pages/Games";
 import TiktokGuess from "@/pages/TiktokGuess";
+import TiktokStats from "@/pages/TiktokStats";
 import Shop from "@/pages/Shop";
 import Admin from "@/pages/Admin";
 import NotFound from "@/pages/not-found";
@@ -18,6 +19,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/pelit" component={Games} />
       <Route path="/arvaus" component={TiktokGuess} />
+      <Route path="/tilastot" component={TiktokStats} />
       <Route path="/kauppa" component={Shop} />
       <Route path="/admin" component={Admin} />
       <Route component={NotFound} />
