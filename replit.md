@@ -34,6 +34,8 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - `POST /api/tiktok-guesses` - Luo uusi arvaus
 - `POST /api/puzzle-scores` - Tallenna pelipistemäärä
 - `GET /api/puzzle-scores/:gameType` - Hae parhaat pisteet pelityypille
+- `GET /api/printful/store-products` - Hae tuotteet Printful-kaupasta
+- `GET /api/printful/products` - Hae kaikki Printful-katalogin tuotteet
 
 #### Sivut (client/src/pages)
 1. **Home** (`/`) - Etusivu heroilla, peliesittelyllä ja toimintakehotteilla
@@ -121,11 +123,12 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - Native Share API mobiilikäyttöön
 - Automaattinen tekstin generointi pelinimellä ja pisteillä
 
-### 10. Mock Verkkokauppa
-- 6 esimerkkituotetta (mukit, t-paidat, hupparit)
-- "Esimerkki" badget kaikilla tuotteilla
-- Info: Printful-integraatio tulossa
-- Disabled "Lisää koriin" -painikkeet
+### 10. Printful Verkkokauppa
+- Integroitu Printful API -yhteys
+- Hakee oikeat tuotteet Printful-kaupasta
+- Näyttää tuotetiedot: nimi, kuva, varianttien määrä
+- Kolme tilaa: ladataan, virhe, tyhjä/tuotteet
+- "Näytä Tuote" -painikkeet jokaiselle tuotteelle
 
 ## Kehitysohjeita
 
@@ -140,7 +143,7 @@ Avaa selain: http://localhost:5000
 - Tuotantoon: Vaihda PostgreSQL-tietokantaan (schema jo määritelty)
 
 ### Tulevat Parannukset
-1. **Printful API**: Oikean verkkokaupan integraatio kun API-token saadaan toimimaan
+1. **Ostoskorifunktio**: Lisää ostoskori ja checkout Printful-tuotteille
 2. **PostgreSQL-tietokanta**: Vaihda in-memory storagesta pysyvään tallennukseen
 3. **Admin-autentikointi**: Suojaa admin-sivu
 4. **Lisää pelejä**: Mahdolliset uudet pelit tulevaisuudessa
@@ -149,16 +152,17 @@ Avaa selain: http://localhost:5000
 ## Huomioitavaa
 
 ### Tunnetut Rajoitukset
-- Mock-verkkokauppa (ei oikeita tuotteita tai ostoskorifunktiota)
+- Ei ostoskorifunktiota (tuotteet näytetään, mutta ei voi ostaa vielä)
 - In-memory storage (data katoaa serverin uudelleenkäynnistyksessä)
 - Ei autentikointia admin-sivulle (lisää tarvittaessa)
 
 ### Seuraavat Askeleet Käyttöönottoon
-1. Lisää oikea Printful API -integraatio
+1. Lisää tuotteita Printful-kauppaan näyttääksesi ne verkkokaupassa
 2. Vaihda PostgreSQL-tietokantaan pysyvään tallennukseen
-3. Lisää admin-autentikointi
-4. Optimoi kuvat ja suorituskyky
-5. Testaa cross-browser yhteensopivuus
+3. Lisää ostoskorifunktio ja checkout-prosessi
+4. Lisää admin-autentikointi
+5. Optimoi kuvat ja suorituskyky
+6. Testaa cross-browser yhteensopivuus
 
 ## Yhteystiedot
 Projekti luotu Porin linjojen kuljettajalle - Bussipukki
