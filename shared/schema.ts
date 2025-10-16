@@ -22,14 +22,18 @@ export const puzzleScores = pgTable("puzzle_scores", {
   id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
   playerName: text("player_name").notNull(),
   timeSeconds: integer("time_seconds").notNull(),
-  gameType: text("game_type").notNull(), // 'puzzle' or 'nut-sort'
+  gameType: text("game_type").notNull(), // 'puzzle', 'nut-sort', 'memory', or 'quiz'
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
 
-export const insertPuzzleScoreSchema = createInsertSchema(puzzleScores).omit({
-  id: true,
-  createdAt: true,
-});
+export const insertPuzzleScoreSchema = createInsertSchema(puzzleScores)
+  .omit({
+    id: true,
+    createdAt: true,
+  })
+  .extend({
+    gameType: z.enum(["puzzle", "nut-sort", "memory", "quiz"]),
+  });
 
 export type InsertPuzzleScore = z.infer<typeof insertPuzzleScoreSchema>;
 export type PuzzleScore = typeof puzzleScores.$inferSelect;
