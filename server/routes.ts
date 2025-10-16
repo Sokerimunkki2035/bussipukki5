@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertTiktokGuessSchema, insertPuzzleScoreSchema } from "@shared/schema";
+import { PrintfulClient } from "printful-request";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   app.get("/api/tiktok-guesses", async (_req, res) => {
@@ -45,6 +46,52 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error fetching puzzle scores:", error);
       res.status(500).json({ message: "Failed to fetch scores" });
+    }
+  });
+
+  app.get("/api/printful/store-products", async (_req, res) => {
+    try {
+      const token = process.env.PRINTFUL_API_TOKEN;
+      
+      if (!token) {
+        return res.status(500).json({ 
+          message: "Printful API token not configured" 
+        });
+      }
+
+      const printful = new PrintfulClient(token);
+      const response = await printful.get("store/products");
+      
+      res.json(response.result || []);
+    } catch (error) {
+      console.error("Error fetching Printful products:", error);
+      res.status(500).json({ 
+        message: "Failed to fetch products from Printful",
+        error: error instanceof Error ? error.message : "Unknown error"
+      });
+    }
+  });
+
+  app.get("/api/printful/products", async (_req, res) => {
+    try {
+      const token = process.env.PRINTFUL_API_TOKEN;
+      
+      if (!token) {
+        return res.status(500).json({ 
+          message: "Printful API token not configured" 
+        });
+      }
+
+      const printful = new PrintfulClient(token);
+      const response = await printful.get("products");
+      
+      res.json(response.result || []);
+    } catch (error) {
+      console.error("Error fetching Printful catalog:", error);
+      res.status(500).json({ 
+        message: "Failed to fetch catalog from Printful",
+        error: error instanceof Error ? error.message : "Unknown error"
+      });
     }
   });
 
