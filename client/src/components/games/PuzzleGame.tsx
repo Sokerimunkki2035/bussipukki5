@@ -8,6 +8,7 @@ import { ArrowLeft, Trophy, RotateCcw } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import confetti from "canvas-confetti";
+import { ShareButtons } from "@/components/ShareButtons";
 
 interface PuzzleGameProps {
   onBack: () => void;
@@ -242,9 +243,22 @@ export function PuzzleGame({ onBack }: PuzzleGameProps) {
                 )}
 
                 {scoreSaved && (
-                  <p className="text-center text-muted-foreground" data-testid="text-score-saved">
-                    Pisteet tallennettu!
-                  </p>
+                  <div className="space-y-4">
+                    <p className="text-center text-muted-foreground" data-testid="text-score-saved">
+                      Pisteet tallennettu!
+                    </p>
+                    <div className="pt-2 border-t">
+                      <p className="text-sm text-center text-muted-foreground mb-3">
+                        Jaa tuloksesi:
+                      </p>
+                      <ShareButtons
+                        gameType="puzzle"
+                        playerName={playerName}
+                        score={timer}
+                        unit="sekuntia"
+                      />
+                    </div>
+                  </div>
                 )}
               </div>
             )}

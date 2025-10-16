@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { ShareButtons } from "@/components/ShareButtons";
 
 interface QuizQuestion {
   question: string;
@@ -90,6 +91,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
   const [isActive, setIsActive] = useState(true);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [playerName, setPlayerName] = useState("");
+  const [scoreSaved, setScoreSaved] = useState(false);
   const { toast } = useToast();
 
   const saveScoreMutation = useMutation({
@@ -110,7 +112,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
         title: "Tuloksesi tallennettu!",
         description: "Loistavaa peliä! Tuloksesi on nyt tulostaulussa.",
       });
-      setShowSaveDialog(false);
+      setScoreSaved(true);
     },
   });
 
@@ -155,6 +157,9 @@ export function QuizGame({ onBack }: QuizGameProps) {
     setShowResult(false);
     setTime(0);
     setIsActive(true);
+    setScoreSaved(false);
+    setPlayerName("");
+    setShowSaveDialog(false);
   };
 
   const handleSaveScore = () => {
@@ -290,35 +295,63 @@ export function QuizGame({ onBack }: QuizGameProps) {
             </DialogTitle>
             <DialogDescription>
               Sait {correctAnswers}/{QUIZ_QUESTIONS.length} oikein ajassa {formatTime(time)}!
-              Haluatko tallentaa tuloksesi?
+              {!scoreSaved && " Haluatko tallentaa tuloksesi?"}
             </DialogDescription>
           </DialogHeader>
-          <div className="py-4">
-            <Label htmlFor="player-name">Nimesi</Label>
-            <Input
-              id="player-name"
-              value={playerName}
-              onChange={(e) => setPlayerName(e.target.value)}
-              placeholder="Syötä nimesi"
-              data-testid="input-player-name-quiz"
-            />
-          </div>
-          <DialogFooter className="gap-2">
-            <Button
-              variant="outline"
-              onClick={() => setShowSaveDialog(false)}
-              data-testid="button-skip-save"
-            >
-              Ohita
-            </Button>
-            <Button
-              onClick={handleSaveScore}
-              disabled={saveScoreMutation.isPending}
-              data-testid="button-save-score-quiz"
-            >
-              {saveScoreMutation.isPending ? "Tallennetaan..." : "Tallenna"}
-            </Button>
-          </DialogFooter>
+          {!scoreSaved ? (
+            <>
+              <div className="py-4">
+                <Label htmlFor="player-name">Nimesi</Label>
+                <Input
+                  id="player-name"
+                  value={playerName}
+                  onChange={(e) => setPlayerName(e.target.value)}
+                  placeholder="Syötä nimesi"
+                  data-testid="input-player-name-quiz"
+                />
+              </div>
+              <DialogFooter className="gap-2">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSaveDialog(false)}
+                  data-testid="button-skip-save"
+                >
+                  Ohita
+                </Button>
+                <Button
+                  onClick={handleSaveScore}
+                  disabled={saveScoreMutation.isPending}
+                  data-testid="button-save-score-quiz"
+                >
+                  {saveScoreMutation.isPending ? "Tallennetaan..." : "Tallenna"}
+                </Button>
+              </DialogFooter>
+            </>
+          ) : (
+            <>
+              <div className="py-4 space-y-4">
+                <p className="text-center text-muted-foreground">
+                  Tuloksesi on tallennettu!
+                </p>
+                <div className="pt-2 border-t">
+                  <p className="text-sm text-center text-muted-foreground mb-3">
+                    Jaa tuloksesi:
+                  </p>
+                  <ShareButtons
+                    gameType="quiz"
+                    playerName={playerName}
+                    score={time}
+                    unit="sekuntia"
+                  />
+                </div>
+              </div>
+              <DialogFooter>
+                <Button onClick={() => setShowSaveDialog(false)} data-testid="button-close-dialog-quiz">
+                  Sulje
+                </Button>
+              </DialogFooter>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </div>
