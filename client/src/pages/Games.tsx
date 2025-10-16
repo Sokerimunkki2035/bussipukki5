@@ -6,6 +6,7 @@ import puzzleImage from "@assets/generated_images/Christmas_puzzle_game_preview_
 import nutImage from "@assets/generated_images/Nut_sorting_game_preview_dc172329.png";
 import { PuzzleGame } from "@/components/games/PuzzleGame";
 import { NutSortGame } from "@/components/games/NutSortGame";
+import { Leaderboard } from "@/components/Leaderboard";
 
 export default function Games() {
   const [activeGame, setActiveGame] = useState<"puzzle" | "nut-sort" | null>(null);
@@ -90,6 +91,16 @@ export default function Games() {
               </Button>
             </CardContent>
           </Card>
+        </div>
+
+        <div className="mt-12">
+          <h2 className="text-3xl font-playful font-bold text-center mb-8">
+            Parhaat Tulokset
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Leaderboard gameType="puzzle" title="Palapeli - Parhaat Ajat" />
+            <Leaderboard gameType="nut-sort" title="Pähkinälajittelu - Parhaat Ajat" />
+          </div>
         </div>
       </div>
     </div>
