@@ -2,17 +2,38 @@
 
 ## 📋 Edellytykset
 
-1. Neon PostgreSQL -tietokanta (ilmainen tier)
-2. Vercel-tili
-3. GitHub-repository yhdistetty
+1. Vercel-tili
+2. GitHub-repository yhdistetty
+3. PostgreSQL-tietokanta (2 vaihtoehtoa alla)
 
-## 🗄️ Vaihe 1: Neon-tietokanta
+## 🗄️ Vaihe 1: Valitse tietokanta
 
-1. Mene osoitteeseen: **https://neon.tech**
-2. Luo ilmainen tili
-3. Luo uusi projekti: **"Bussipukki"**
-4. Kopioi connection string (DATABASE_URL)
-   - Se näyttää tältä: `postgresql://user:pass@host/dbname`
+### **VAIHTOEHTO A: Vercel Postgres (SUOSITUS - HELPOIN)**
+
+✅ **Edut:**
+- Ei erillistä rekisteröintiä
+- Automaattinen integraatio
+- Ilmainen (60h compute/kk)
+
+**Ohjeet:**
+1. Deployaa ensin ilman tietokantaa (katso Vaihe 2)
+2. Vercel Dashboardissa: **Storage → Create Database**
+3. Valitse **Postgres** → Anna nimi "bussipukki-db"
+4. Ympäristömuuttujat lisätään automaattisesti!
+5. Aja migraatiot Storage → Query -välilehdellä (kopioi migrations/*.sql)
+
+### **VAIHTOEHTO B: Neon PostgreSQL**
+
+**Jos Neon ei lähetä aktivointilinkkiä:**
+- Ei haittaa! Tili on aktiivinen heti
+- Kirjaudu suoraan: **https://console.neon.tech**
+- TAI käytä GitHub/Google-kirjautumista
+
+**Ohjeet:**
+1. Kirjaudu/rekisteröidy: **https://neon.tech**
+2. Luo projekti: **"Bussipukki"**
+3. Kopioi connection string (DATABASE_URL)
+4. Lisää Vercel ympäristömuuttujiin manuaalisesti
 
 ## 🚀 Vaihe 2: Vercel-deployment
 
@@ -24,14 +45,23 @@
 
 ### B) Environment Variables (Ympäristömuuttujat):
 
-Lisää nämä **Settings → Environment Variables** kohdassa:
+**Jos käytät Vercel Postgres:**
+- POSTGRES_URL lisätään automaattisesti ✅
+- Lisää vain nämä manuaalisesti:
+  ```
+  PRINTFUL_API_TOKEN=iKngiV7eEQRCDgJL4qYslo0wmvVP9a5sldafCRy6
+  SESSION_SECRET=your-session-secret-here
+  NODE_ENV=production
+  ```
 
-```
-DATABASE_URL=postgresql://user:pass@host/dbname
-PRINTFUL_API_TOKEN=iKngiV7eEQRCDgJL4qYslo0wmvVP9a5sldafCRy6
-SESSION_SECRET=your-session-secret-here
-NODE_ENV=production
-```
+**Jos käytät Neon tietokantaa:**
+- Lisää **Settings → Environment Variables** kohdassa:
+  ```
+  DATABASE_URL=postgresql://user:pass@host/dbname
+  PRINTFUL_API_TOKEN=iKngiV7eEQRCDgJL4qYslo0wmvVP9a5sldafCRy6
+  SESSION_SECRET=your-session-secret-here
+  NODE_ENV=production
+  ```
 
 ### C) Aja migraatiot:
 

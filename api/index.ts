@@ -18,10 +18,11 @@ let dbInstance: ReturnType<typeof drizzle> | null = null;
 
 function getDb() {
   if (!dbInstance) {
-    if (!process.env.DATABASE_URL) {
+    const dbUrl = process.env.DATABASE_URL || process.env.POSTGRES_URL;
+    if (!dbUrl) {
       return null; // Gracefully return null instead of throwing
     }
-    const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+    const pool = new Pool({ connectionString: dbUrl });
     dbInstance = drizzle(pool);
   }
   return dbInstance;
