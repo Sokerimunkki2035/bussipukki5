@@ -4,7 +4,7 @@
 Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle. Sivusto sisältää pelejä bussimatkustajille, TikTok live arvauspeliä sekä mock-verkkokaupan Bussipukki-tuotteille.
 
 ## Projektin Tila
-**Valmis MVP** - Kaikki pääominaisuudet toiminnassa
+**Valmis Tuotantoon** - Kaikki pääominaisuudet toiminnassa ja Vercel-yhteensopiva
 - ✅ Jouluinen design (punainen, vihreä, kulta, kermanvärinen)
 - ✅ Neljä toimivaa peliä (palapeli, pähkinälajittelu, muistipeli, bussikilpailu) pisteiden tallennuksella
 - ✅ Leaderboard -tulostaulut kaikille peleille (top 10 pisteet)
@@ -12,13 +12,17 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - ✅ TikTok tilastosivu analytiikalla
 - ✅ Admin-näkymä arvausten tarkasteluun
 - ✅ Sosiaalinen jakaminen (Twitter/X, Facebook, native share API)
-- ✅ Mock-verkkokauppa esimerkkituotteilla
+- ✅ Printful-verkkokauppa oikeilla tuotteilla
+- ✅ PostgreSQL-tietokanta (Neon) pysyvään tallennukseen
+- ✅ Vercel serverless -arkkitehtuuri
 
 ## Tekninen Toteutus
 
 ### Tech Stack
 - **Frontend**: React 18, Wouter (routing), TanStack Query (data fetching), Tailwind CSS
-- **Backend**: Express.js, In-memory storage (MemStorage)
+- **Backend**: Express.js serverless functions (Vercel), PostgreSQL (Neon)
+- **Database**: Neon serverless PostgreSQL, Drizzle ORM
+- **Deployment**: Vercel (frontend + serverless API)
 - **UI Components**: Shadcn UI, Lucide Icons
 - **Design**: Jouluinen teema mukautetuilla väreillä ja fonteilla
 
@@ -139,30 +143,48 @@ npm run dev
 Avaa selain: http://localhost:5000
 
 ### Tiedon Hallinta
-- **In-memory storage**: Kaikki data tallennetaan muistiin (katoaa uudelleenkäynnistyksessä)
-- Tuotantoon: Vaihda PostgreSQL-tietokantaan (schema jo määritelty)
+- **PostgreSQL-tietokanta**: Neon serverless PostgreSQL (pysyvä tallennus)
+- **Drizzle ORM**: Tyyppiturvallinen tietokannan hallinta
+- **Migraatiot**: Drizzle Kit -pohjainen migraatiojärjestelmä
+- **Fallback**: MemStorage kehitysympäristöön ilman DATABASE_URL:ia
 
 ### Tulevat Parannukset
 1. **Ostoskorifunktio**: Lisää ostoskori ja checkout Printful-tuotteille
-2. **PostgreSQL-tietokanta**: Vaihda in-memory storagesta pysyvään tallennukseen
-3. **Admin-autentikointi**: Suojaa admin-sivu
-4. **Lisää pelejä**: Mahdolliset uudet pelit tulevaisuudessa
-5. **Optimoinnit**: Kuvien ja suorituskyvyn optimointi
+2. **Admin-autentikointi**: Suojaa admin-sivu
+3. **Lisää pelejä**: Mahdolliset uudet pelit tulevaisuudessa
+4. **Optimoinnit**: Kuvien ja suorituskyvyn optimointi
+5. **Analytics**: Lisää Google Analytics tai vastaava
+
+## Vercel-deployment
+
+### Valmis Deploymenttiin
+Sovellus on täysin valmis deploymenttiin Verceliin:
+- ✅ Vercel serverless -funktiot (api/index.ts)
+- ✅ Neon PostgreSQL -yhteensopivuus
+- ✅ Vercel.json -konfiguraatio
+- ✅ Migraatioskriptit valmiina
+
+### Deployment-ohjeet
+Katso täydelliset ohjeet tiedostosta: **VERCEL_DEPLOY.md**
+
+Lyhyesti:
+1. **Luo Neon-tietokanta** (ilmainen): neon.tech
+2. **Deployaa Verceliin**: Yhdistä GitHub-repo
+3. **Aseta ympäristömuuttujat**: DATABASE_URL, PRINTFUL_API_TOKEN, SESSION_SECRET
+4. **Aja migraatiot**: `npm run db:migrate`
 
 ## Huomioitavaa
 
 ### Tunnetut Rajoitukset
 - Ei ostoskorifunktiota (tuotteet näytetään, mutta ei voi ostaa vielä)
-- In-memory storage (data katoaa serverin uudelleenkäynnistyksessä)
 - Ei autentikointia admin-sivulle (lisää tarvittaessa)
 
-### Seuraavat Askeleet Käyttöönottoon
-1. Lisää tuotteita Printful-kauppaan näyttääksesi ne verkkokaupassa
-2. Vaihda PostgreSQL-tietokantaan pysyvään tallennukseen
+### Seuraavat Askeleet
+1. **Deploy Verceliin** (katso VERCEL_DEPLOY.md)
+2. Lisää tuotteita Printful-kauppaan
 3. Lisää ostoskorifunktio ja checkout-prosessi
 4. Lisää admin-autentikointi
 5. Optimoi kuvat ja suorituskyky
-6. Testaa cross-browser yhteensopivuus
 
 ## Yhteystiedot
 Projekti luotu Porin linjojen kuljettajalle - Bussipukki
