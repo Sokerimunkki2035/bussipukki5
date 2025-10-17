@@ -1,5 +1,9 @@
-import { type TiktokGuess, type InsertTiktokGuess, type PuzzleScore, type InsertPuzzleScore } from "@shared/schema";
+import { type TiktokGuess, type InsertTiktokGuess, type PuzzleScore, type InsertPuzzleScore, tiktokGuesses, puzzleScores } from "@shared/schema";
 import { randomUUID } from "crypto";
+import { drizzle } from "drizzle-orm/neon-serverless";
+import { Pool, neonConfig } from "@neondatabase/serverless";
+import { desc, asc, eq } from "drizzle-orm";
+import ws from "ws";
 
 export interface IStorage {
   createTiktokGuess(guess: InsertTiktokGuess): Promise<TiktokGuess>;
@@ -53,4 +57,56 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// PostgreSQL Storage using Neon for Vercel deployment
+export class PostgresStorage implements IStorage {
+  private db;
+
+  constructor() {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL is not set");
+    }
+
+    // Configure for Vercel serverless (WebSocket support)
+    neonConfig.webSocketConstructor = ws;
+    
+    const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+    this.db = drizzle(pool);
+  }
+
+  async createTiktokGuess(insertGuess: InsertTiktokGuess): Promise<TiktokGuess> {
+    const [guess] = await this.db
+      .insert(tiktokGuesses)
+      .values(insertGuess)
+      .returning();
+    return guess;
+  }
+
+  async getAllTiktokGuesses(): Promise<TiktokGuess[]> {
+    return await this.db
+      .select()
+      .from(tiktokGuesses)
+      .orderBy(desc(tiktokGuesses.createdAt));
+  }
+
+  async createPuzzleScore(insertScore: InsertPuzzleScore): Promise<PuzzleScore> {
+    const [score] = await this.db
+      .insert(puzzleScores)
+      .values(insertScore)
+      .returning();
+    return score;
+  }
+
+  async getTopPuzzleScores(gameType: string, limit: number): Promise<PuzzleScore[]> {
+    return await this.db
+      .select()
+      .from(puzzleScores)
+      .where(eq(puzzleScores.gameType, gameType))
+      .orderBy(asc(puzzleScores.timeSeconds))
+      .limit(limit);
+  }
+}
+
+// Use PostgreSQL in production (Vercel), fallback to MemStorage for local dev without DB
+export const storage = process.env.DATABASE_URL 
+  ? new PostgresStorage() 
+  : new MemStorage();
