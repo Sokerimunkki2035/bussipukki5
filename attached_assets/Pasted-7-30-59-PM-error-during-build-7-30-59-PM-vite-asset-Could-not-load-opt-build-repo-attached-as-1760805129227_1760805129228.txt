@@ -1,0 +1,51 @@
+7:30:59 PM: error during build:
+7:30:59 PM: [vite:asset] Could not load /opt/build/repo/attached_assets/generated_images/Christmas_puzzle_game_preview_e1d3c0db.png (imported by client/src/pages/Home.tsx): ENOENT: no such file or directory, open '/opt/build/repo/attached_assets/generated_images/Christmas_puzzle_game_preview_e1d3c0db.png'
+7:30:59 PM:     at async open (node:internal/fs/promises:639:25)
+7:30:59 PM:     at async Object.readFile (node:internal/fs/promises:1246:14)
+7:30:59 PM:     at async fileToBuiltUrl (file:///opt/build/repo/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:20428:19)
+7:30:59 PM:     at async Object.load (file:///opt/build/repo/node_modules/vite/dist/node/chunks/dep-D_zLpgQd.js:20328:17)
+7:30:59 PM:     at async PluginDriver.hookFirstAndGetPlugin (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:20689:28)
+7:30:59 PM:     at async file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:19809:33
+7:30:59 PM:     at async Queue.work (file:///opt/build/repo/node_modules/rollup/dist/es/shared/node-entry.js:20899:32)
+7:30:59 PM: ​
+7:30:59 PM: "build.command" failed                                        
+7:30:59 PM: ────────────────────────────────────────────────────────────────
+7:30:59 PM: ​
+7:30:59 PM:   Error message
+7:30:59 PM:   Command failed with exit code 1: npm run build
+7:30:59 PM: ​
+7:30:59 PM:   Error location
+7:30:59 PM:   In build.command from netlify.toml:
+7:30:59 PM:   npm run build
+7:30:59 PM: ​
+7:30:59 PM:   Resolved config
+7:30:59 PM:   build:
+7:30:59 PM:     command: npm run build
+7:30:59 PM:     commandOrigin: config
+7:30:59 PM:     environment:
+7:30:59 PM:       - GITHUB_PERSONAL_ACCESS_TOKEN
+7:30:59 PM:       - PRINTFUL_API_TOKEN
+7:30:59 PM:       - SESSION_SECRET
+7:30:59 PM:       - NODE_VERSION
+7:30:59 PM:     publish: /opt/build/repo/dist
+7:30:59 PM:     publishOrigin: config
+7:30:59 PM:   functions:
+7:30:59 PM:     "*":
+7:30:59 PM:       external_node_modules:
+7:30:59 PM:         - express
+7:30:59 PM:         - "@neondatabase/serverless"
+7:30:59 PM:         - ws
+7:30:59 PM:       node_bundler: esbuild
+7:30:59 PM:   functionsDirectory: /opt/build/repo/netlify/functions
+7:30:59 PM:   redirects:
+7:30:59 PM:     - force: true
+7:30:59 PM:       from: /api/*
+      status: 200
+      to: /.netlify/functions/api/:splat
+    - from: /*
+      status: 200
+      to: /index.html
+  redirectsOrigin: config
+7:30:59 PM: Build failed due to a user error: Build script returned non-zero exit code: 2
+7:30:59 PM: Failing build: Failed to build site
+7:30:59 PM: Finished processing build request in 16.5s

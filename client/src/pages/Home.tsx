@@ -2,20 +2,12 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Gamepad2, ShoppingBag, Trophy } from "lucide-react";
-import heroImage from "@assets/generated_images/Christmas_decorated_bus_hero_f1476ba9.png";
-import puzzleImage from "@assets/generated_images/Christmas_puzzle_game_preview_e1d3c0db.png";
-import nutImage from "@assets/generated_images/Nut_sorting_game_preview_dc172329.png";
 
 export default function Home() {
   return (
     <div className="min-h-screen">
       <section
-        className="relative h-[80vh] flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${heroImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="relative h-[80vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-primary via-[hsl(0,84%,40%)] to-[hsl(140,45%,35%)]"
       >
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-5xl md:text-7xl font-festive font-bold text-white mb-6 drop-shadow-lg">
@@ -59,12 +51,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="hover-elevate transition-transform">
               <CardHeader>
-                <div className="w-full h-48 mb-4 rounded-md overflow-hidden">
-                  <img
-                    src={puzzleImage}
-                    alt="Palapeli"
-                    className="w-full h-full object-cover"
-                  />
+                <div className="w-full h-48 mb-4 rounded-md overflow-hidden bg-gradient-to-br from-primary/20 to-red-600/20 flex items-center justify-center">
+                  <Gamepad2 className="w-24 h-24 text-primary" />
                 </div>
                 <CardTitle className="font-playful text-2xl flex items-center gap-2">
                   <Gamepad2 className="w-6 h-6 text-primary" />
