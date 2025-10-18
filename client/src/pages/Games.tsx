@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Puzzle, Nut, Brain, Bus } from "lucide-react";
+import { Puzzle, Bolt, Brain, Bus } from "lucide-react";
 import { PuzzleGame } from "@/components/games/PuzzleGame";
 import { NutSortGame } from "@/components/games/NutSortGame";
 import { MemoryGame } from "@/components/games/MemoryGame";
@@ -68,16 +68,16 @@ export default function Games() {
 
           <Card className="hover-elevate transition-transform">
             <CardHeader>
-              <div className="w-full h-64 mb-4 rounded-md overflow-hidden bg-gradient-to-br from-amber-600/20 to-primary/20 flex items-center justify-center">
-                <Nut className="w-32 h-32 text-amber-600" />
+              <div className="w-full h-64 mb-4 rounded-md overflow-hidden bg-gradient-to-br from-primary/20 to-green-600/20 flex items-center justify-center">
+                <Bolt className="w-32 h-32 text-primary" />
               </div>
               <CardTitle className="font-playful text-3xl flex items-center gap-2">
-                <Nut className="w-8 h-8 text-primary" />
-                Pähkinälajittelu
+                <Bolt className="w-8 h-8 text-primary" />
+                Ruuvilajittelu
               </CardTitle>
               <CardDescription className="text-base">
-                Lajittele pähkinät oikeisiin lokeroihin! Testaa reaktionopeuttasi
-                ja muistiasi tässä hauskassa lajittelupelissä.
+                Lajittele ruuvit oikeassa järjestyksessä ennen kuin aika loppuu!
+                Testaa reaktionopeuttasi tässä jännittävässä nopeuspelissä.
               </CardDescription>
             </CardHeader>
             <CardContent>
@@ -151,7 +151,7 @@ export default function Games() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Leaderboard gameType="puzzle" title="Palapeli - Parhaat Ajat" />
-            <Leaderboard gameType="nut-sort" title="Pähkinälajittelu - Parhaat Ajat" />
+            <Leaderboard gameType="nut-sort" title="Ruuvilajittelu - Parhaat Ajat" />
             <Leaderboard gameType="memory" title="Muistipeli - Parhaat Ajat" />
             <Leaderboard gameType="quiz" title="Bussitietovisa - Parhaat Ajat" />
           </div>

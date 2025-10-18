@@ -9,6 +9,7 @@ import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import confetti from "canvas-confetti";
 import { ShareButtons } from "@/components/ShareButtons";
+import puzzleImage from "@assets/generated_images/Christmas_puzzle_game_illustration_3c485086.png";
 
 interface PuzzleGameProps {
   onBack: () => void;
@@ -199,7 +200,7 @@ export function PuzzleGame({ onBack }: PuzzleGameProps) {
                         : "border-card-border"
                     }`}
                     style={{
-                      backgroundImage: `url(${import.meta.env.BASE_URL}assets/generated_images/Christmas_puzzle_game_preview_e1d3c0db.png)`,
+                      backgroundImage: `url(${puzzleImage})`,
                       backgroundSize: `${gridSize * 100}%`,
                       backgroundPosition: `${(col / (gridSize - 1)) * 100}% ${(row / (gridSize - 1)) * 100}%`,
                     }}
