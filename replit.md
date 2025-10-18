@@ -4,9 +4,13 @@
 Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle. Sivusto sisältää pelejä bussimatkustajille, TikTok live arvauspeliä sekä mock-verkkokaupan Bussipukki-tuotteille.
 
 ## Projektin Tila
-**Valmis Tuotantoon** - Kaikki pääominaisuudet toiminnassa ja Vercel-yhteensopiva
+**Valmis Tuotantoon** - Kaikki pääominaisuudet toiminnassa ja Netlify-yhteensopiva
 - ✅ Jouluinen design (punainen, vihreä, kulta, kermanvärinen)
-- ✅ Neljä toimivaa peliä (palapeli, pähkinälajittelu, muistipeli, bussikilpailu) pisteiden tallennuksella
+- ✅ Neljä toimivaa peliä pisteiden tallennuksella:
+  - **Joulupalapeli**: Generoitu jouluinen kuva, 3x3 palapeli
+  - **Ruuvilajittelu**: Countdown-ajastin (60s), Bussipukki-taustakuva, värikkäät ruuvit (punainen, vihreä, kulta, valkoinen)
+  - **Muistipeli**: 3D-kääntyvät kortit, jouluiset ikonit (8 paria)
+  - **Bussikilpailu**: Tietokilpailu Porin linjoista
 - ✅ Leaderboard -tulostaulut kaikille peleille (top 10 pisteet)
 - ✅ TikTok live arvaus -järjestelmä
 - ✅ TikTok tilastosivu analytiikalla
@@ -14,7 +18,7 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - ✅ Sosiaalinen jakaminen (Twitter/X, Facebook, native share API)
 - ✅ Printful-verkkokauppa oikeilla tuotteilla
 - ✅ PostgreSQL-tietokanta (Neon) pysyvään tallennukseen
-- ✅ Vercel serverless -arkkitehtuuri
+- ✅ Netlify deployment -yhteensopiva arkkitehtuuri
 
 ## Tekninen Toteutus
 
