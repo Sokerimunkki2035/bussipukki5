@@ -232,17 +232,18 @@ export function MemoryGame({ onBack }: MemoryGameProps) {
             const iconColor = CARD_ICONS[card.iconIndex].color;
 
             return (
-              <div
+              <button
                 key={card.id}
                 className="aspect-square perspective-1000"
                 onClick={() => handleCardClick(card.id)}
                 data-testid={`card-${card.id}`}
+                type="button"
               >
                 <div
                   className={`relative w-full h-full cursor-pointer transition-transform duration-500 transform-style-3d ${
                     card.isFlipped || card.isMatched ? "rotate-y-180" : ""
                   } ${card.isMatched ? "opacity-50" : ""}`}
-                  style={{ transformStyle: "preserve-3d" }}
+                  style={{ transformStyle: "preserve-3d", pointerEvents: "none" }}
                 >
                   <Card className="absolute w-full h-full backface-hidden hover-elevate">
                     <CardContent className="flex items-center justify-center h-full p-0">
@@ -260,7 +261,7 @@ export function MemoryGame({ onBack }: MemoryGameProps) {
                     </CardContent>
                   </Card>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>
