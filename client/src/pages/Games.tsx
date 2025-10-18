@@ -2,8 +2,6 @@ import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Puzzle, Nut, Brain, Bus } from "lucide-react";
-import puzzleImage from "@assets/generated_images/Christmas_puzzle_game_preview_e1d3c0db.png";
-import nutImage from "@assets/generated_images/Nut_sorting_game_preview_dc172329.png";
 import { PuzzleGame } from "@/components/games/PuzzleGame";
 import { NutSortGame } from "@/components/games/NutSortGame";
 import { MemoryGame } from "@/components/games/MemoryGame";
@@ -44,12 +42,8 @@ export default function Games() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <Card className="hover-elevate transition-transform">
             <CardHeader>
-              <div className="w-full h-64 mb-4 rounded-md overflow-hidden">
-                <img
-                  src={puzzleImage}
-                  alt="Joulupalapeli"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full h-64 mb-4 rounded-md overflow-hidden bg-gradient-to-br from-primary/20 to-red-600/20 flex items-center justify-center">
+                <Puzzle className="w-32 h-32 text-primary" />
               </div>
               <CardTitle className="font-playful text-3xl flex items-center gap-2">
                 <Puzzle className="w-8 h-8 text-primary" />
@@ -74,12 +68,8 @@ export default function Games() {
 
           <Card className="hover-elevate transition-transform">
             <CardHeader>
-              <div className="w-full h-64 mb-4 rounded-md overflow-hidden">
-                <img
-                  src={nutImage}
-                  alt="Pähkinälajittelu"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-full h-64 mb-4 rounded-md overflow-hidden bg-gradient-to-br from-amber-600/20 to-primary/20 flex items-center justify-center">
+                <Nut className="w-32 h-32 text-amber-600" />
               </div>
               <CardTitle className="font-playful text-3xl flex items-center gap-2">
                 <Nut className="w-8 h-8 text-primary" />
