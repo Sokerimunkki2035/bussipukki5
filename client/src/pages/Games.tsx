@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Puzzle, Bolt, Brain, Bus } from "lucide-react";
 import { PuzzleGame } from "@/components/games/PuzzleGame";
-import { NutSortGame } from "@/components/games/NutSortGame";
+import { BoltSortGame } from "@/components/games/BoltSortGame";
 import { MemoryGame } from "@/components/games/MemoryGame";
 import { QuizGame } from "@/components/games/QuizGame";
 import { Leaderboard } from "@/components/Leaderboard";
@@ -16,7 +16,7 @@ export default function Games() {
   }
 
   if (activeGame === "nut-sort") {
-    return <NutSortGame onBack={() => setActiveGame(null)} />;
+    return <BoltSortGame onBack={() => setActiveGame(null)} />;
   }
 
   if (activeGame === "memory") {
@@ -76,8 +76,8 @@ export default function Games() {
                 Ruuvilajittelu
               </CardTitle>
               <CardDescription className="text-base">
-                Lajittele ruuvit oikeassa järjestyksessä ennen kuin aika loppuu!
-                Testaa reaktionopeuttasi tässä jännittävässä nopeuspelissä.
+                Järjestä värilliset mutterit ruuveille! Raahaa muttereita ruuvista toiseen
+                ja laita kaikki saman väriset mutterit samalle ruuville.
               </CardDescription>
             </CardHeader>
             <CardContent>
