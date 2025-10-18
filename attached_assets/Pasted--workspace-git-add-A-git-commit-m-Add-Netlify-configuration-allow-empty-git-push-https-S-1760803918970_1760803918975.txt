@@ -1,0 +1,39 @@
+~/workspace$ git add -A
+git commit -m "Add Netlify configuration" --allow-empty
+git push https://Sokerimunkki2035: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@github.com/Sokerimunkki2035/bussipukki5.git main --force
+[main 03a16a7] Add Netlify configuration
+Enumerating objects: 35, done.
+Counting objects: 100% (35/35), done.
+Delta compression using up to 8 threads
+Compressing objects:  34% (10/29Compressing objects:  37% (11/29Compressing objects:  41% (12/29Compressing objects:  44% (13/29Compressing objects:  48% (14/29Compressing objects:  51% (15/29Compressing objects:  55% (16/29Compressing objects:  58% (17/29Compressing objects:  62% (18/29Compressing objects:  65% (19/29Compressing objects:  68% (20/29Compressing objects:  72% (21/29Compressing objects:  75% (22/29Compressing objects:  79% (23/29Compressing objects:  82% (24/29Compressing objects:  86% (25/29Compressing objects:  89% (26/29Compressing objects:  93% (27/29Compressing objects:  96% (28/29Compressing objects: 100% (29/29Compressing objects: 100% (29/29), done.
+Writing objects: 100% (31/31), 4.83 KiB | 2.42 MiB/s, done.
+Total 31 (delta 23), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas:   0% (remote: Resolving deltas:   4% (remote: Resolving deltas:   8% (remote: Resolving deltas:  13% (remote: Resolving deltas:  17% (remote: Resolving deltas:  21% (remote: Resolving deltas:  26% (remote: Resolving deltas:  30% (remote: Resolving deltas:  34% (remote: Resolving deltas:  39% (remote: Resolving deltas:  43% (remote: Resolving deltas:  47% (remote: Resolving deltas:  52% (remote: Resolving deltas:  56% (remote: Resolving deltas:  60% (remote: Resolving deltas:  65% (remote: Resolving deltas:  69% (remote: Resolving deltas:  73% (remote: Resolving deltas:  78% (remote: Resolving deltas:  82% (remote: Resolving deltas:  86% (remote: Resolving deltas:  91% (remote: Resolving deltas:  95% (remote: Resolving deltas: 100% (remote: Resolving deltas: 100% (23/23), completed with 4 local objects.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+remote:     
+remote:     
+remote:       —— GitHub Personal Access Token ——————————————————————
+remote:        locations:
+remote:          - commit: 13414161851d6a4aef025121ce6c5db6dcf1f0a4
+remote:            path: push_netlify.sh:11
+remote:          - commit: f86f6e45972c9003a0f7908cd55dd180457292cd
+remote:            path: push_to_github.sh:11
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/Sokerimunkki2035/bussipukki5/security/secret-scanning/unblock-secret/34FClsxKu6kjDGWNGW0zgsjlgGy
+remote:     
+remote: 
+remote: 
+To https://github.com/Sokerimunkki2035/bussipukki5.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'https://github.com/Sokerimunkki2035/bussipukki5.git'
