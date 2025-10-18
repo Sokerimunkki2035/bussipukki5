@@ -17,22 +17,22 @@ interface NutSortGameProps {
 
 interface BoltItem {
   id: number;
-  type: "red" | "green" | "gold" | "white";
+  type: "red" | "green" | "gold" | "blue";
   sorted: boolean;
 }
 
-const boltTypes = ["red", "green", "gold", "white"] as const;
+const boltTypes = ["red", "green", "gold", "blue"] as const;
 const boltColors = {
   red: "text-primary",
   green: "text-green-600",
   gold: "text-yellow-500",
-  white: "text-slate-100",
+  blue: "text-blue-500",
 };
 const boltNames = {
   red: "Punainen ruuvi",
   green: "Vihreä ruuvi",
   gold: "Kultainen ruuvi",
-  white: "Valkoinen ruuvi",
+  blue: "Sininen ruuvi",
 };
 
 const GAME_TIME = 60; // 60 seconds countdown
