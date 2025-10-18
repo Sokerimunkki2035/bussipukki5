@@ -234,32 +234,47 @@ export function MemoryGame({ onBack }: MemoryGameProps) {
             return (
               <button
                 key={card.id}
-                className="aspect-square perspective-1000"
+                className="aspect-square"
                 onClick={() => handleCardClick(card.id)}
                 data-testid={`card-${card.id}`}
                 type="button"
+                style={{ perspective: "1000px" }}
               >
                 <div
-                  className={`relative w-full h-full cursor-pointer transition-transform duration-500 transform-style-3d ${
-                    card.isFlipped || card.isMatched ? "rotate-y-180" : ""
-                  } ${card.isMatched ? "opacity-50" : ""}`}
-                  style={{ transformStyle: "preserve-3d", pointerEvents: "none" }}
+                  className={`relative w-full h-full cursor-pointer transition-transform duration-500 ${
+                    card.isMatched ? "opacity-50" : ""
+                  }`}
+                  style={{
+                    transformStyle: "preserve-3d",
+                    transform: card.isFlipped || card.isMatched ? "rotateY(180deg)" : "rotateY(0deg)",
+                    pointerEvents: "none",
+                  }}
                 >
-                  <Card className="absolute w-full h-full backface-hidden hover-elevate">
-                    <CardContent className="flex items-center justify-center h-full p-0">
-                      <div className="w-full h-full bg-primary/20 rounded-md flex items-center justify-center">
-                        <span className="text-4xl font-festive text-primary">?</span>
-                      </div>
-                    </CardContent>
-                  </Card>
-                  <Card
-                    className="absolute w-full h-full backface-hidden rotate-y-180"
-                    style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden" }}
+                  <div
+                    className="absolute w-full h-full"
+                    style={{ backfaceVisibility: "hidden" }}
                   >
-                    <CardContent className="flex items-center justify-center h-full p-0">
-                      <IconComponent className={`w-12 h-12 ${iconColor}`} />
-                    </CardContent>
-                  </Card>
+                    <Card className="w-full h-full hover-elevate">
+                      <CardContent className="flex items-center justify-center h-full p-0">
+                        <div className="w-full h-full bg-primary/20 rounded-md flex items-center justify-center">
+                          <span className="text-4xl font-festive text-primary">?</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                  <div
+                    className="absolute w-full h-full"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                    }}
+                  >
+                    <Card className="w-full h-full">
+                      <CardContent className="flex items-center justify-center h-full p-0">
+                        <IconComponent className={`w-12 h-12 ${iconColor}`} />
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
               </button>
             );
