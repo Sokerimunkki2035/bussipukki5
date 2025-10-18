@@ -1,0 +1,57 @@
+9:48:35 PM: Netlify Build                                                 
+9:48:35 PM: ────────────────────────────────────────────────────────────────
+9:48:35 PM: ​
+9:48:35 PM: ❯ Version
+9:48:35 PM:   @netlify/build 35.1.10
+9:48:35 PM: ​
+9:48:35 PM: ❯ Flags
+9:48:35 PM:   accountId: 68e904e2359fdbbb890af9ae
+9:48:35 PM:   baseRelDir: true
+9:48:35 PM:   buildId: 68f3e0f41e35cc00083d6270
+9:48:35 PM:   deployId: 68f3e0f41e35cc00083d6272
+9:48:36 PM: ​
+9:48:36 PM: ❯ Current directory
+9:48:36 PM:   /opt/build/repo
+9:48:36 PM: ​
+9:48:36 PM: ❯ Config file
+9:48:36 PM:   /opt/build/repo/netlify.toml
+9:48:36 PM: ​
+9:48:36 PM: ❯ Context
+9:48:36 PM:   production
+9:48:36 PM: ​
+9:48:36 PM: build.command from netlify.toml                               
+9:48:36 PM: ────────────────────────────────────────────────────────────────
+9:48:36 PM: ​
+9:48:36 PM: $ npm run build
+9:48:36 PM: > rest-express@1.0.0 build
+9:48:36 PM: > vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist
+9:48:36 PM: vite v5.4.20 building for production...
+9:48:36 PM: transforming...
+9:48:37 PM: Browserslist: browsers data (caniuse-lite) is 12 months old. Please run:
+9:48:37 PM:   npx update-browserslist-db@latest
+9:48:37 PM:   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+9:48:40 PM: A PostCSS plugin did not pass the `from` option to `postcss.parse`. This may cause imported assets to be incorrectly transformed. If you've recently added a PostCSS plugin that raised this warning, please contact the package author to fix the issue.
+✓ 2027 modules transformed.
+9:48:40 PM: rendering chunks...
+9:48:40 PM: computing gzip size...
+9:48:40 PM: ../dist/public/index.html                   1.24 kB │ gzip:   0.59 kB
+9:48:40 PM: ../dist/public/assets/index-B_hzshol.css   78.05 kB │ gzip:  12.55 kB
+9:48:40 PM: ../dist/public/assets/index-Cvx--Prt.js   399.48 kB │ gzip: 124.83 kB
+9:48:40 PM: ✓ built in 3.71s
+9:48:40 PM:   dist/index.js  10.8kb
+9:48:40 PM: ⚡ Done in 20ms
+9:48:40 PM: ​
+9:48:40 PM: (build.command completed in 4.3s)
+9:48:40 PM: ​
+9:48:40 PM: Functions bundling                                            
+9:48:40 PM: ────────────────────────────────────────────────────────────────
+9:48:40 PM: ​
+9:48:40 PM: Packaging Functions from netlify/functions directory:
+9:48:40 PM:  - api.ts
+9:48:40 PM: ​
+9:48:41 PM: ​
+9:48:41 PM: (Functions bundling completed in 802ms)
+9:48:41 PM: ​
+9:48:47 PM: (Netlify Build completed in 12s)
+9:48:48 PM: Section completed: building
+9:49:09 PM: Finished processing build request in 46.807s
