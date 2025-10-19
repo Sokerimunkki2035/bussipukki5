@@ -32,9 +32,9 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 2,
   },
   {
-    question: "Kuinka monta päälinjaa Porissa on?",
-    options: ["5", "7", "10", "12"],
-    correctAnswer: 1,
+    question: "Montako laituria Porin kauppatorilla on?",
+    options: ["4", "6", "7", "8"],
+    correctAnswer: 3,
   },
   {
     question: "Mikä on Porin keskustan pääpysäkki?",
