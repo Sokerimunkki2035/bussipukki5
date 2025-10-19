@@ -47,9 +47,9 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 2,
   },
   {
-    question: "Mikä linja kulkee Sampoon?",
+    question: "Mikä linja kulkee Sampolaan?",
     options: ["Linja 2", "Linja 4", "Linja 6", "Linja 8"],
-    correctAnswer: 0,
+    correctAnswer: 2,
   },
   {
     question: "Kuinka pitkä on Porin pisin bussilinja?",
