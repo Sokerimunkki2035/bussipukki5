@@ -57,9 +57,9 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 2,
   },
   {
-    question: "Mikä on Porin bussien pääväri?",
-    options: ["Punainen", "Sininen", "Vihreä", "Keltainen"],
-    correctAnswer: 2,
+    question: "Missä linjan 60 päätepysäkki on?",
+    options: ["Reposaaren rannassa", "Ulvilan Naparannassa", "Kirjurinluodon rannassa", "Lyttylän merenrannassa"],
+    correctAnswer: 3,
   },
   {
     question: "Millä linjalla pääsee Porin-Satakunnan lentoasemalle?",
