@@ -117,14 +117,31 @@ export function BoltSortGame({ onBack }: BoltSortGameProps) {
   };
 
   const checkWinCondition = (currentBolts: Bolt[]) => {
-    // Check if each bolt with nuts has all same-colored nuts
+    // Track which bolt ID holds each color (to ensure no color is split)
+    const colorBoltMap = new Map<NutColor, number>();
+    
     for (const bolt of currentBolts) {
       if (bolt.nuts.length === 0) continue;
       
+      // All nuts on this bolt must be the same color
       const firstColor = bolt.nuts[0].color;
       const allSameColor = bolt.nuts.every(nut => nut.color === firstColor);
       
       if (!allSameColor) return false;
+      
+      // Check if this color has been seen on a DIFFERENT bolt
+      const existingBoltId = colorBoltMap.get(firstColor);
+      if (existingBoltId !== undefined && existingBoltId !== bolt.id) {
+        return false; // This color is split across multiple bolts!
+      }
+      
+      // Track that this color is on this bolt
+      colorBoltMap.set(firstColor, bolt.id);
+      
+      // Also verify this bolt has exactly NUTS_PER_COLOR (4)
+      if (bolt.nuts.length !== NUTS_PER_COLOR) {
+        return false; // Incomplete grouping
+      }
     }
     
     return true;
@@ -238,13 +255,13 @@ export function BoltSortGame({ onBack }: BoltSortGameProps) {
           <div className="flex gap-6">
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5 text-primary" />
-              <span className={`text-xl font-semibold ${timeLeft < 30 ? 'text-red-600' : ''}`}>
+              <span className={`text-xl font-semibold ${timeLeft < 30 ? 'text-red-600' : ''}`} data-testid="text-timer">
                 {formatTime(timeLeft)}
               </span>
             </div>
             <div className="flex items-center gap-2">
               <Trophy className="w-5 h-5 text-primary" />
-              <span className="text-xl font-semibold">{moves} siirtoa</span>
+              <span className="text-xl font-semibold" data-testid="text-moves">{moves} siirtoa</span>
             </div>
           </div>
           <Button onClick={initializeGame} data-testid="button-reset">
