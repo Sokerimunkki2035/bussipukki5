@@ -112,7 +112,9 @@ export class PostgresStorage implements IStorage {
   }
 }
 
-// Use PostgreSQL in production (Vercel), fallback to MemStorage for local dev without DB
-export const storage = process.env.DATABASE_URL 
-  ? new PostgresStorage() 
-  : new MemStorage();
+// Use MemStorage in development, PostgreSQL in production
+export const storage = process.env.NODE_ENV === 'development'
+  ? new MemStorage()
+  : process.env.DATABASE_URL 
+    ? new PostgresStorage() 
+    : new MemStorage();
