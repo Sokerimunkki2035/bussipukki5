@@ -42,9 +42,9 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 2,
   },
   {
-    question: "Milloin Porin joukkoliikenne aloitti toimintansa?",
-    options: ["1945", "1955", "1965", "1975"],
-    correctAnswer: 1,
+    question: "Milloin Porin Linjat oy aloitti toimintansa?",
+    options: ["1965", "1972", "1976", "1983"],
+    correctAnswer: 2,
   },
   {
     question: "Mikä linja kulkee Sampoon?",
