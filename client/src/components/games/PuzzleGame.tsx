@@ -202,7 +202,7 @@ export function PuzzleGame({ onBack }: PuzzleGameProps) {
                     style={{
                       backgroundImage: `url(${puzzleImage})`,
                       backgroundSize: `${gridSize * 100}%`,
-                      backgroundPosition: `${(col / (gridSize - 1)) * 100}% ${(row / (gridSize - 1)) * 100}%`,
+                      backgroundPosition: `${col * -100}% ${row * -100}%`,
                     }}
                   />
                 );

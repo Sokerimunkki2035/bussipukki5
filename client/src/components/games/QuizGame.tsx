@@ -28,8 +28,8 @@ interface QuizQuestion {
 const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     question: "Mikä linja kulkee Porin keskustasta Meri-Poriin?",
-    options: ["Linja 1", "Linja 3", "Linja 5", "Linja 7"],
-    correctAnswer: 1,
+    options: ["Linja 1", "Linja 7", "Linja 43", "Linja 32"],
+    correctAnswer: 2,
   },
   {
     question: "Kuinka monta päälinjaa Porissa on?",
