@@ -96,12 +96,16 @@ export function QuizGame({ onBack }: QuizGameProps) {
 
   const saveScoreMutation = useMutation({
     mutationFn: async (data: { playerName: string; timeSeconds: number }) => {
-      return apiRequest("/api/puzzle-scores", "POST", {
+      console.log("🔵 Saving score:", data);
+      const result = await apiRequest("/api/puzzle-scores", "POST", {
         ...data,
         gameType: "quiz",
       });
+      console.log("✅ Score saved:", result);
+      return result;
     },
     onSuccess: () => {
+      console.log("🎉 onSuccess called!");
       queryClient.invalidateQueries({ queryKey: ["/api/puzzle-scores", "quiz"] });
       confetti({
         particleCount: 100,
@@ -114,6 +118,14 @@ export function QuizGame({ onBack }: QuizGameProps) {
       });
       setScoreSaved(true);
       setShowSaveDialog(false);
+    },
+    onError: (error) => {
+      console.error("❌ onError called:", error);
+      toast({
+        title: "Virhe",
+        description: "Tallennus epäonnistui: " + (error instanceof Error ? error.message : "Tuntematon virhe"),
+        variant: "destructive",
+      });
     },
   });
 
@@ -164,6 +176,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
   };
 
   const handleSaveScore = () => {
+    console.log("🔘 handleSaveScore called, playerName:", playerName, "time:", time);
     if (!playerName.trim()) {
       toast({
         title: "Virhe",
@@ -172,6 +185,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
       });
       return;
     }
+    console.log("🚀 Calling mutation...");
     saveScoreMutation.mutate({ playerName: playerName.trim(), timeSeconds: time });
   };
 
