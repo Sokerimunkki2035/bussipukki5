@@ -67,9 +67,9 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 2,
   },
   {
-    question: "Kuinka monta bussia Porin liikenteessä on käytössä?",
-    options: ["20-30", "30-40", "40-50", "50-60"],
-    correctAnswer: 1,
+    question: "Montako bussia Porin linjoilla on?",
+    options: ["30-40", "40-50", "50-60", "60-70"],
+    correctAnswer: 3,
   },
   {
     question: "Mikä on suosituin bussilinja Porissa?",
