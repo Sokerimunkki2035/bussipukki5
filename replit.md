@@ -164,16 +164,29 @@ Avaa selain: http://localhost:5000
 4. **Optimoinnit**: Kuvien ja suorituskyvyn optimointi
 5. **Analytics**: Lisää Google Analytics tai vastaava
 
-## Vercel-deployment
+## Deployment
 
-### Valmis Deploymenttiin
-Sovellus on täysin valmis deploymenttiin Verceliin:
+### Valmis Tuotantoon
+Sovellus on täysin valmis deploymenttiin sekä Netlifyyn että Verceliin:
+- ✅ Netlify serverless -funktiot (netlify/functions/api.ts)
 - ✅ Vercel serverless -funktiot (api/index.ts)
 - ✅ Neon PostgreSQL -yhteensopivuus
-- ✅ Vercel.json -konfiguraatio
+- ✅ Netlify.toml ja Vercel.json -konfiguraatiot
 - ✅ Migraatioskriptit valmiina
 
-### Deployment-ohjeet
+### Deployment-vaihtoehdot
+
+#### Vaihtoehto A: Netlify (SUOSITUS)
+Katso täydelliset ohjeet tiedostosta: **NETLIFY_DEPLOY.md**
+
+Lyhyesti:
+1. **Luo Neon-tietokanta** (ilmainen): neon.tech
+2. **Pushaa koodi GitHubiin**: `git push`
+3. **Deployaa Netlifyyn**: Yhdistä GitHub-repo
+4. **Aseta ympäristömuuttujat**: DATABASE_URL, PRINTFUL_API_TOKEN, SESSION_SECRET
+5. **Aja migraatiot**: `npm run db:migrate`
+
+#### Vaihtoehto B: Vercel
 Katso täydelliset ohjeet tiedostosta: **VERCEL_DEPLOY.md**
 
 Lyhyesti:
@@ -189,11 +202,12 @@ Lyhyesti:
 - Ei autentikointia admin-sivulle (lisää tarvittaessa)
 
 ### Seuraavat Askeleet
-1. **Deploy Verceliin** (katso VERCEL_DEPLOY.md)
-2. Lisää tuotteita Printful-kauppaan
-3. Lisää ostoskorifunktio ja checkout-prosessi
-4. Lisää admin-autentikointi
-5. Optimoi kuvat ja suorituskyky
+1. **Deploy Netlifyyn tai Verceliin** (katso NETLIFY_DEPLOY.md tai VERCEL_DEPLOY.md)
+2. Mainosta multiplayer-ominaisuutta TikTokissa (kuukausi etukäteen)
+3. Toteuta multiplayer WebSocket-pelaaminen (maksullinen ominaisuus)
+4. Lisää ostoskorifunktio ja checkout Printful-tuotteille
+5. Lisää admin-autentikointi ja Replit Auth
+6. Optimoi kuvat ja suorituskyky
 
 ## Yhteystiedot
 Projekti luotu Porin linjojen kuljettajalle - Bussipukki
