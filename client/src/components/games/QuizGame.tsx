@@ -96,16 +96,12 @@ export function QuizGame({ onBack }: QuizGameProps) {
 
   const saveScoreMutation = useMutation({
     mutationFn: async (data: { playerName: string; timeSeconds: number }) => {
-      console.log("🔵 Saving score:", data);
-      const result = await apiRequest("/api/puzzle-scores", "POST", {
+      return apiRequest("POST", "/api/puzzle-scores", {
         ...data,
         gameType: "quiz",
       });
-      console.log("✅ Score saved:", result);
-      return result;
     },
     onSuccess: () => {
-      console.log("🎉 onSuccess called!");
       queryClient.invalidateQueries({ queryKey: ["/api/puzzle-scores", "quiz"] });
       confetti({
         particleCount: 100,
@@ -120,7 +116,6 @@ export function QuizGame({ onBack }: QuizGameProps) {
       setShowSaveDialog(false);
     },
     onError: (error) => {
-      console.error("❌ onError called:", error);
       toast({
         title: "Virhe",
         description: "Tallennus epäonnistui: " + (error instanceof Error ? error.message : "Tuntematon virhe"),
@@ -176,7 +171,6 @@ export function QuizGame({ onBack }: QuizGameProps) {
   };
 
   const handleSaveScore = () => {
-    console.log("🔘 handleSaveScore called, playerName:", playerName, "time:", time);
     if (!playerName.trim()) {
       toast({
         title: "Virhe",
@@ -185,14 +179,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
       });
       return;
     }
-    console.log("🚀 Calling mutation...");
     saveScoreMutation.mutate({ playerName: playerName.trim(), timeSeconds: time });
-    
-    // Fallback: Close dialog after 2 seconds regardless of mutation result
-    setTimeout(() => {
-      console.log("⏰ Timeout - closing dialog");
-      setShowSaveDialog(false);
-    }, 2000);
   };
 
   const formatTime = (seconds: number) => {

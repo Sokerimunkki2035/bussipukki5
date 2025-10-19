@@ -65,7 +65,7 @@ export function MemoryGame({ onBack }: MemoryGameProps) {
 
   const saveScoreMutation = useMutation({
     mutationFn: async (data: { playerName: string; timeSeconds: number }) => {
-      return apiRequest("/api/puzzle-scores", "POST", {
+      return apiRequest("POST", "/api/puzzle-scores", {
         ...data,
         gameType: "memory",
       });
