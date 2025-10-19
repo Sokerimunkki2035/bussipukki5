@@ -53,7 +53,7 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
   },
   {
     question: "Kuinka pitkä on Porin pisin bussilinja?",
-    options: ["10 km", "15 km", "20 km", "25 km"],
+    options: ["25 km", "32 km", "41 km", "55 km"],
     correctAnswer: 2,
   },
   {
