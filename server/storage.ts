@@ -66,8 +66,14 @@ export class PostgresStorage implements IStorage {
       throw new Error("DATABASE_URL is not set");
     }
 
-    // Configure for Vercel serverless (WebSocket support)
-    neonConfig.webSocketConstructor = ws;
+    // Configure for serverless - use WebSocket only in production
+    // In development, use HTTP to avoid SSL certificate issues
+    if (process.env.NODE_ENV !== 'development') {
+      neonConfig.webSocketConstructor = ws;
+    } else {
+      // In development, use fetchConnectionCache for HTTP
+      neonConfig.fetchConnectionCache = true;
+    }
     
     const pool = new Pool({ connectionString: process.env.DATABASE_URL });
     this.db = drizzle(pool);
