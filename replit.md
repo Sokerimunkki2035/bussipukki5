@@ -5,6 +5,7 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 
 ## Projektin Tila
 **Valmis Tuotantoon** - Kaikki pääominaisuudet toiminnassa ja Netlify-yhteensopiva
+- ✅ **KORJATTU 19.10.2025**: Dialogi sulkeutuu automaattisesti tallennuksen jälkeen (apiRequest-parametrijärjestys)
 - ✅ Jouluinen design (punainen, vihreä, kulta, kermanvärinen)
 - ✅ Neljä toimivaa peliä pisteiden tallennuksella:
   - **Joulupalapeli**: Generoitu jouluinen kuva, 3x3 palapeli
