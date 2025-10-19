@@ -72,8 +72,8 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
     correctAnswer: 3,
   },
   {
-    question: "Mikä on suosituin bussilinja Porissa?",
-    options: ["Linja 1", "Linja 2", "Linja 3", "Linja 4"],
+    question: "Minkä verran pysäkkejä on Porin Linjojen lyhimmällä linjalla?",
+    options: ["3", "4", "5", "6"],
     correctAnswer: 2,
   },
 ];
