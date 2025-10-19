@@ -10,8 +10,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// Configure Neon for serverless  
-neonConfig.webSocketConstructor = ws;
+// Configure Neon for serverless - use WebSocket in production, HTTP in development
+if (process.env.NODE_ENV !== 'development') {
+  neonConfig.webSocketConstructor = ws;
+}
 
 // Lazy database connection (cached per serverless instance)
 let dbInstance: ReturnType<typeof drizzle> | null = null;
@@ -22,8 +24,17 @@ function getDb() {
     if (!dbUrl) {
       return null; // Gracefully return null instead of throwing
     }
-    const pool = new Pool({ connectionString: dbUrl });
-    dbInstance = drizzle(pool);
+    
+    // In development, use neonConfig.fetchConnectionCache for HTTP
+    // In production, use Pool for WebSocket
+    if (process.env.NODE_ENV === 'development') {
+      neonConfig.fetchConnectionCache = true;
+      const pool = new Pool({ connectionString: dbUrl });
+      dbInstance = drizzle(pool);
+    } else {
+      const pool = new Pool({ connectionString: dbUrl });
+      dbInstance = drizzle(pool);
+    }
   }
   return dbInstance;
 }
