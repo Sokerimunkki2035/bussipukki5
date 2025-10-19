@@ -113,6 +113,7 @@ export function QuizGame({ onBack }: QuizGameProps) {
         description: "Loistavaa peliä! Tuloksesi on nyt tulostaulussa.",
       });
       setScoreSaved(true);
+      setShowSaveDialog(false);
     },
   });
 

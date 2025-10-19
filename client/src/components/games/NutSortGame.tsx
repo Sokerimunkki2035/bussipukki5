@@ -54,6 +54,7 @@ export function NutSortGame({ onBack }: NutSortGameProps) {
     },
     onSuccess: () => {
       setScoreSaved(true);
+      setIsComplete(false);
       toast({
         title: "Pisteet tallennettu!",
         description: `${playerName}, aikasi ${GAME_TIME - timeLeft} sekuntia on nyt tallennettu.`,

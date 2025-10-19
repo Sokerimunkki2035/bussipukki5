@@ -40,6 +40,7 @@ export function PuzzleGame({ onBack }: PuzzleGameProps) {
     },
     onSuccess: () => {
       setScoreSaved(true);
+      setIsComplete(false);
       toast({
         title: "Pisteet tallennettu!",
         description: `${playerName}, aikasi ${formatTime(timer)} on nyt tallennettu.`,

@@ -82,6 +82,7 @@ export function MemoryGame({ onBack }: MemoryGameProps) {
         description: "Loistavaa peliä! Tuloksesi on nyt tulostaulussa.",
       });
       setScoreSaved(true);
+      setShowSaveDialog(false);
     },
   });
 
