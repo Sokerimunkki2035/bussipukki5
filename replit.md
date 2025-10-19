@@ -8,7 +8,7 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - ✅ Jouluinen design (punainen, vihreä, kulta, kermanvärinen)
 - ✅ Neljä toimivaa peliä pisteiden tallennuksella:
   - **Joulupalapeli**: Generoitu jouluinen kuva, 3x3 palapeli
-  - **Ruuvilajittelu**: Countdown-ajastin (60s), Bussipukki-taustakuva, värikkäät ruuvit (punainen, vihreä, kulta, valkoinen)
+  - **Ruuvilajittelu**: HTML5 Drag & Drop, 30 pystyruuvia, 24 mutteria (6 väriä × 4), 3 min countdown-ajastin
   - **Muistipeli**: 3D-kääntyvät kortit, jouluiset ikonit (8 paria)
   - **Bussikilpailu**: Tietokilpailu Porin linjoista
 - ✅ Leaderboard -tulostaulut kaikille peleille (top 10 pisteet)
@@ -83,11 +83,16 @@ Bussipukki on jouluteemainen nettisivu Porin linjojen linja-auton kuljettajalle.
 - Ajastin ja pistetilastot
 - Pisteiden tallennus nimellä
 
-### 2. Pähkinälajittelu
-- Lajittele pähkinät oikeassa järjestyksessä
-- Neljä eri pähkinätyyppiä (käytetään Lucide Nut -ikonia eri väreillä)
-- Ajastin ja pistetilastot
-- Pisteiden tallennus nimellä
+### 2. Ruuvilajittelu
+- HTML5 Drag & Drop -mekaniikka mutterien raahaaminen
+- 30 pystyruuvia (vertical bolts)
+- 24 mutteria: 6 väriä × 4 mutteria (punainen, vihreä, sininen, kulta, purppura, oranssi)
+- Maksimikapasiteetti: 5 mutteria per ruuvi
+- 3 minuutin countdown-ajastin (alkaa ensimmäisestä siirrosta)
+- Voittologiikka: Kaikki saman väriset mutterit SAMALLA ruuvilla
+- Siirtojen laskuri
+- Confetti-efekti voitosta
+- Aloita Alusta -nappi
 
 ### 3. Muistipeli
 - 16 korttia jouluisilla ikoneilla (8 paria)
