@@ -187,6 +187,12 @@ export function QuizGame({ onBack }: QuizGameProps) {
     }
     console.log("🚀 Calling mutation...");
     saveScoreMutation.mutate({ playerName: playerName.trim(), timeSeconds: time });
+    
+    // Fallback: Close dialog after 2 seconds regardless of mutation result
+    setTimeout(() => {
+      console.log("⏰ Timeout - closing dialog");
+      setShowSaveDialog(false);
+    }, 2000);
   };
 
   const formatTime = (seconds: number) => {
