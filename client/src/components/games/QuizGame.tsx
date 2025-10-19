@@ -34,7 +34,7 @@ const QUIZ_QUESTIONS: QuizQuestion[] = [
   {
     question: "Montako laituria Porin kauppatorilla on?",
     options: ["4", "6", "7", "8"],
-    correctAnswer: 3,
+    correctAnswer: 2,
   },
   {
     question: "Mikä on Porin keskustan pääpysäkki?",
